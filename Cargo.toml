@@ -1,6 +1,6 @@
 [package]
 name = "dprint-plugin-sexpr"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["RubixDev"]
 edition = "2021"
 homepage = "https://github.com/RubixDev/dprint-plugin-sexpr"
@@ -14,8 +14,8 @@ description = "S-expression support for dprint"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]
-anyhow = "1.0.71"
-dprint-core = { version = "0.61.0", features = ["wasm"] }
-rsexpr = { version = "0.2.2", features = ["comments"] }
-serde = { version = "1.0.163", features = ["derive"] }
-serde_json = "1.0.96"
+anyhow = "1.0.72"
+dprint-core = { version = "0.62.1", features = ["wasm"] }
+rsexpr = { version = "0.2.4", features = ["comments"] }
+serde = { version = "1.0.177", features = ["derive"] }
+serde_json = "1.0.104"
