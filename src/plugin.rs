@@ -6,7 +6,7 @@ use dprint_core::{
         self, ConfigKeyMap, GlobalConfiguration, ResolveConfigurationResult,
         RECOMMENDED_GLOBAL_CONFIGURATION,
     },
-    plugins::{FormatResult, PluginInfo, SyncPluginHandler},
+    plugins::{FileMatchingInfo, FormatResult, PluginInfo, SyncPluginHandler, SyncPluginInfo},
 };
 
 use crate::config::Configuration;
@@ -41,16 +41,22 @@ impl SyncPluginHandler<Configuration> for SexprPluginHandler {
         }
     }
 
-    fn plugin_info(&mut self) -> PluginInfo {
-        PluginInfo {
-            name: env!("CARGO_PKG_NAME").to_string(),
-            version: env!("CARGO_PKG_VERSION").to_string(),
-            config_key: "sexpr".to_string(),
-            file_extensions: vec!["scm".to_string()],
-            file_names: vec![],
-            help_url: concat!(env!("CARGO_PKG_REPOSITORY"), "#readme").to_string(),
-            config_schema_url: "".to_string(),
-            update_url: Some("https://plugins.dprint.dev/RubixDev/sexpr/latest.json".to_string()),
+    fn plugin_info(&mut self) -> SyncPluginInfo {
+        SyncPluginInfo {
+            info: PluginInfo {
+                name: env!("CARGO_PKG_NAME").to_string(),
+                version: env!("CARGO_PKG_VERSION").to_string(),
+                config_key: "sexpr".to_string(),
+                help_url: concat!(env!("CARGO_PKG_REPOSITORY"), "#readme").to_string(),
+                config_schema_url: "".to_string(),
+                update_url: Some(
+                    "https://plugins.dprint.dev/RubixDev/sexpr/latest.json".to_string(),
+                ),
+            },
+            file_matching: FileMatchingInfo {
+                file_extensions: vec!["scm".to_string()],
+                file_names: vec![],
+            },
         }
     }
 
